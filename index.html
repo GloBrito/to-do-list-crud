@@ -28,7 +28,7 @@
           <div class="nav-wrapper"></div>
         </nav>
         ​
-        <div class="container" v-show="!modoAdicionar">
+        <div class="container" v-show="!modoAdicionar && !modoEditar">
           <div class="section">
             <!--   Icon Section   -->
             <div class="row">
@@ -41,7 +41,7 @@
                     <span class="projeto">{{ tarefa.project }}</span>
                   </div>
                   <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <button @click="abrirEditar(tarefa.id)">Editar</button>
                   </div>
                 </div>
               </div>
@@ -79,6 +79,39 @@
         />
         <button @click="salvar">Salvar</button>
       </div>
+      <!-- FIM Adicionar -->
+
+      <!-- Início Editar -->
+      <div class="container" v-show="modoEditar">
+        <input
+          type="text"
+          class="input"
+          placeholder="nome"
+          v-model="criacao.title"
+        />
+        <input
+          type="text"
+          class="input"
+          placeholder="usuario"
+          v-model="criacao.user"
+        />
+        <input
+          type="text"
+          class="input"
+          placeholder="projeto"
+          v-model="criacao.project"
+        />
+        <input
+          type="datetime-local"
+          class="input"
+          placeholder="data"
+          v-model="criacao.dueTo"
+        />
+        <button @click="salvarEditar">Salvar Edição</button>
+      </div>
+
+      <!-- FIM Editar -->
+
       <div class="add">
         <a
           class="btn-floating btn-large waves-effect waves-light red"

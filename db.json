@@ -29,10 +29,10 @@
       "id": 6
     },
     {
-      "user": "gg",
+      "user": "ppp",
       "dueTo": null,
-      "project": "gg",
-      "title": "ggg",
+      "project": "",
+      "title": "0987",
       "id": 7
     },
     {
@@ -41,13 +41,6 @@
       "project": "a",
       "title": "xx",
       "id": 8
-    },
-    {
-      "user": "Bruninha",
-      "dueTo": null,
-      "project": "Edy",
-      "title": "BRUNINH",
-      "id": 9
     }
   ]
 }
