@@ -23,54 +23,73 @@
   </head>
   <body>
     <div id="app">
-      <nav class="orange darken-2">
-        <div class="nav-wrapper"></div>
-      </nav>
-      ​
-      <div class="container">
-        <div class="section">
-          <!--   Icon Section   -->
-          <div class="row">
-            <!-- card de tarefa que repete para cada item do array -->
-            <div v-for="tarefa in tasks" class="card horizontal">
-              <div class="card-stacked">
-                <button @click="excluir(tarefa.id)">excluir</button>
-                <div class="card-content">
-                  <p>{{ tarefa.title }}</p>
-                  <span class="projeto">{{ tarefa.project }}</span>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+      <div>
+        <nav class="pink">
+          <div class="nav-wrapper"></div>
+        </nav>
+        ​
+        <div class="container" v-show="!modoAdicionar">
+          <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+              <!-- card de tarefa que repete para cada item do array -->
+              <div v-for="tarefa in tasks" class="card horizontal">
+                <div class="card-stacked">
+                  <button @click="excluir(tarefa.id)">excluir</button>
+                  <div class="card-content">
+                    <p>{{ tarefa.title }}</p>
+                    <span class="projeto">{{ tarefa.project }}</span>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="add">
-          <a
-            class="btn-floating btn-large waves-effect waves-light red"
-            href="tasksNew.html"
-            ><i class="fa-solid fa-plus"></i
-          ></a>
-        </div>
       </div>
-      <input
-        type="text"
-        class="input"
-        placeholder="nome"
-        v-model="criacao.title"
-      />
-      <input type="text" class="input" placeholder="usuario" />
-      <input type="text" class="input" placeholder="projeto" />
-      <input type="datetime-local" class="input" placeholder="data" />
-      ​
-      <!-- <footer class="page-footer orange darken-3">
-        <div class="footer-copyright">
-          <div class="container">© 2022 Frontend</div>
-        </div>
-      </footer> -->
+      <!--auqi-->
+
+      <!-- adicionar -->
+      <div class="container" v-show="modoAdicionar">
+        <input
+          type="text"
+          class="input"
+          placeholder="nome"
+          v-model="criacao.title"
+        />
+        <input
+          type="text"
+          class="input"
+          placeholder="usuario"
+          v-model="criacao.user"
+        />
+        <input
+          type="text"
+          class="input"
+          placeholder="projeto"
+          v-model="criacao.project"
+        />
+        <input
+          type="datetime-local"
+          class="input"
+          placeholder="data"
+          v-model="criacao.dueTo"
+        />
+        <button @click="salvar">Salvar</button>
+      </div>
+      <div class="add">
+        <a
+          class="btn-floating btn-large waves-effect waves-light red"
+          @click="criarNovaTask"
+          ><i class="fa-solid fa-plus"></i
+        ></a>
+      </div>
     </div>
-    <!-- app -->
+
+    <!-- fim adicionar -->
+
     ​
     <!-- Materialize JavaScript CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

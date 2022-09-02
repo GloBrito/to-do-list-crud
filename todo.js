@@ -3,6 +3,7 @@ var app = new Vue({
   data: {
     message: "Olá Vue!",
     tasks: [],
+    modoAdicionar: false,
     criacao: {
       user: "",
       dueTo: null,
@@ -23,8 +24,19 @@ var app = new Vue({
       console.log(id);
       fetch(`http://localhost:3000/tasks/${id}`, { method: "DELETE" });
     },
-    criar() {
-      console.log(123);
+    criarNovaTask() {
+      if (this.modoAdicionar == false) {
+        this.modoAdicionar = true;
+      } else {
+        this.modoAdicionar = false;
+      }
+    },
+    salvar() {
+      fetch(`http://localhost:3000/tasks/`, {
+        method: "POST",
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify(this.criacao),
+      });
     },
   },
   created() {
