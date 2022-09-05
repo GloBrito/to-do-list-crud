@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,7 +27,13 @@
         <nav class="pink">
           <div class="nav-wrapper"></div>
         </nav>
-        ​
+
+        <!-- Barra de Pesquisa  -->
+
+        <input placeholder="Pesquisar" v-show="!modoAdicionar && !modoEditar" ><i></i></input>
+
+<!--     -->
+
         <div class="container" v-show="!modoAdicionar && !modoEditar">
           <div class="section">
             <!--   Icon Section   -->
@@ -35,13 +41,13 @@
               <!-- card de tarefa que repete para cada item do array -->
               <div v-for="tarefa in tasks" class="card horizontal">
                 <div class="card-stacked">
-                  <button @click="excluir(tarefa.id)">excluir</button>
                   <div class="card-content">
                     <p>{{ tarefa.title }}</p>
                     <span class="projeto">{{ tarefa.project }}</span>
                   </div>
-                  <div class="card-action">
+                  <div class="card-action pink lighten-5">
                     <button @click="abrirEditar(tarefa.id)">Editar</button>
+                    <button @click="excluir(tarefa.id)">excluir</button>
                   </div>
                 </div>
               </div>
@@ -56,13 +62,13 @@
         <input
           type="text"
           class="input"
-          placeholder="nome"
+          placeholder="Tarefa"
           v-model="criacao.title"
         />
         <input
           type="text"
           class="input"
-          placeholder="usuario"
+          placeholder="Descrição"
           v-model="criacao.user"
         />
         <input
@@ -86,13 +92,13 @@
         <input
           type="text"
           class="input"
-          placeholder="nome"
+          placeholder="Tarefa"
           v-model="criacao.title"
         />
         <input
           type="text"
           class="input"
-          placeholder="usuario"
+          placeholder="Descrição"
           v-model="criacao.user"
         />
         <input
@@ -112,9 +118,10 @@
 
       <!-- FIM Editar -->
 
+      <!-- Início adicionar -->
       <div class="add">
         <a
-          class="btn-floating btn-large waves-effect waves-light red"
+          class="btn-floating btn-large waves-effect waves-light pink halfway-fab bottom-sheet"
           @click="criarNovaTask"
           ><i class="fa-solid fa-plus"></i
         ></a>

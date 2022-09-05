@@ -42,11 +42,11 @@ var app = new Vue({
     },
     abrirEditar(id) {
       this.att = id;
-      if (this.modoEditar == false) {
-        this.modoEditar = true;
-      } else {
-        this.modoEditar = false;
-      }
+      // if (this.modoEditar == false) {
+      //   this.modoEditar = true;
+      // } else {
+      //   this.modoEditar = false;
+      this.modoEditar = !this.modoEditar;
     },
     salvarEditar() {
       fetch(`http://localhost:3000/tasks/${this.att}`, {
@@ -54,6 +54,7 @@ var app = new Vue({
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(this.criacao),
       });
+      // this.modoEditar = false;
     },
   },
   created() {
