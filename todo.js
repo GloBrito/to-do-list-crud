@@ -38,11 +38,15 @@ var app = new Vue({
       }
     },
     salvar() {
-      fetch(`http://localhost:3000/tasks/`, {
-        method: "POST",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(this.criacao),
-      }).then(() => {
+      fetch(
+        `http://localhost:3000/tasks/`,
+        {
+          method: "POST",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify(this.criacao),
+        },
+        (this.modoAdicionar = false)
+      ).then(() => {
         this.getTasks();
       });
     },
