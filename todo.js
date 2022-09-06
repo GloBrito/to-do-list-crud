@@ -24,7 +24,11 @@ var app = new Vue({
     },
     excluir(id) {
       console.log(id);
-      fetch(`http://localhost:3000/tasks/${id}`, { method: "DELETE" });
+      fetch(`http://localhost:3000/tasks/${id}`, { method: "DELETE" }).then(
+        () => {
+          this.getTasks();
+        }
+      );
     },
     criarNovaTask() {
       if (this.modoAdicionar == false) {
@@ -38,21 +42,30 @@ var app = new Vue({
         method: "POST",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(this.criacao),
+      }).then(() => {
+        this.getTasks();
       });
     },
     abrirEditar(id) {
       this.att = id;
-      // if (this.modoEditar == false) {
-      //   this.modoEditar = true;
-      // } else {
-      //   this.modoEditar = false;
-      this.modoEditar = !this.modoEditar;
+      if (this.modoEditar == false) {
+        this.modoEditar = true;
+      } else {
+        this.modoEditar = false;
+        // this.modoEditar = !this.modoEditar;
+      }
     },
     salvarEditar() {
-      fetch(`http://localhost:3000/tasks/${this.att}`, {
-        method: "PATCH",
-        headers: { "content-Type": "application/json" },
-        body: JSON.stringify(this.criacao),
+      fetch(
+        `http://localhost:3000/tasks/${this.att}`,
+        {
+          method: "PATCH",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify(this.criacao),
+        },
+        (this.modoEditar = false)
+      ).then(() => {
+        this.getTasks();
       });
       // this.modoEditar = false;
     },
