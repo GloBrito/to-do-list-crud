@@ -33,7 +33,7 @@
         <input placeholder="Pesquisar" v-show="!modoAdicionar && !modoEditar" ><i></i></input>
 
 <!--     -->
-
+<!-- Container com todas as tarefas -->
         <div class="container" v-show="!modoAdicionar && !modoEditar">
           <div class="section">
             <!--   Icon Section   -->
@@ -57,7 +57,7 @@
       </div>
       <!--auqi-->
 
-      <!-- adicionar -->
+      <!--  Form de adicionar as tarefas-->
       <div class="container" v-show="modoAdicionar">
         <input
           type="text"
@@ -87,7 +87,7 @@
       </div>
       <!-- FIM Adicionar -->
 
-      <!-- Início Editar -->
+      <!-- Início forms de  editar tarefas -->
       <div class="container" v-show="modoEditar">
         <input
           type="text"
@@ -100,6 +100,7 @@
           class="input"
           placeholder="Descrição"
           v-model="criacao.user"
+          
         />
         <input
           type="text"
@@ -113,7 +114,7 @@
           placeholder="data"
           v-model="criacao.dueTo"
         />
-        <button @click="salvarEditar">Salvar Edição</button>
+        <button @click="salvarEditar(criacao.id)">Salvar Edição</button>
       </div>
 
       <!-- FIM Editar -->

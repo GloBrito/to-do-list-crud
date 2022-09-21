@@ -48,20 +48,26 @@ var app = new Vue({
         (this.modoAdicionar = false)
       ).then(() => {
         this.getTasks();
+        this.atualizarPagina();
       });
     },
     abrirEditar(id) {
-      this.att = id;
       if (this.modoEditar == false) {
         this.modoEditar = true;
       } else {
         this.modoEditar = false;
         // this.modoEditar = !this.modoEditar;
       }
+      fetch(`http://localhost:3000/tasks/${id}`)
+        .then((response) => response.json())
+        .then((taskJson) => {
+          console.log(taskJson);
+          this.criacao = taskJson;
+        });
     },
-    salvarEditar() {
+    salvarEditar(id) {
       fetch(
-        `http://localhost:3000/tasks/${this.att}`,
+        `http://localhost:3000/tasks/${id}`,
         {
           method: "PATCH",
           headers: { "content-Type": "application/json" },
@@ -70,8 +76,12 @@ var app = new Vue({
         (this.modoEditar = false)
       ).then(() => {
         this.getTasks();
+        this.atualizarPagina();
       });
       // this.modoEditar = false;
+    },
+    atualizarPagina() {
+      document.location.reload(true);
     },
   },
   created() {

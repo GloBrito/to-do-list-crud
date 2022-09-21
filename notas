@@ -1,3 +1,6 @@
+// Ao editar, não está puxando o que é para editar;
+// Ao adicionar nova tarefa, aparece os dados da edição anterior;
+// NOs inputs e nas tarefas mudar de USER para o nome DESCRIÇÃO incluindo v-model nos inputs dos dois forms;
 // Acrescentar Barra pesquisar;
 // Filtrar pesquisa na barra de pesquisa;
 // Centralizar botão de adicionar tarefas;
