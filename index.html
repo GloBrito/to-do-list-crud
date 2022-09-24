@@ -29,11 +29,15 @@
         </nav>
 
         <!-- Barra de Pesquisa  -->
+        <i
+          ><input
+            placeholder="Pesquisar tarefa"
+            style="font-size: 30px"
+            v-show="!modoAdicionar && !modoEditar" /></i
+        ><button>Pesquisar</button>
 
-        <input placeholder="Pesquisar" v-show="!modoAdicionar && !modoEditar" ><i></i></input>
-
-<!--     -->
-<!-- Container com todas as tarefas -->
+        <!--     -->
+        <!-- Container com todas as tarefas -->
         <div class="container" v-show="!modoAdicionar && !modoEditar">
           <div class="section">
             <!--   Icon Section   -->
@@ -100,7 +104,6 @@
           class="input"
           placeholder="Descrição"
           v-model="criacao.user"
-          
         />
         <input
           type="text"
@@ -131,10 +134,9 @@
 
     <!-- fim adicionar -->
 
-    ​
     <!-- Materialize JavaScript CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    ​
+
     <script src="./todo.js"></script>
   </body>
 </html>
