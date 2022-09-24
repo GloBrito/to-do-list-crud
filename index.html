@@ -33,8 +33,9 @@
           ><input
             placeholder="Pesquisar tarefa"
             style="font-size: 30px"
-            v-show="!modoAdicionar && !modoEditar" /></i
-        ><button>Pesquisar</button>
+            v-model="input"
+            v-show="!modoAdicionar && !modoEditar"
+        /></i>
 
         <!--     -->
         <!-- Container com todas as tarefas -->
@@ -43,7 +44,7 @@
             <!--   Icon Section   -->
             <div class="row">
               <!-- card de tarefa que repete para cada item do array -->
-              <div v-for="tarefa in tasks" class="card horizontal">
+              <div v-for="tarefa in inputSearch" class="card horizontal">
                 <div class="card-stacked">
                   <div class="card-content">
                     <p>{{ tarefa.title }}</p>

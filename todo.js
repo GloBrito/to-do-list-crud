@@ -6,6 +6,7 @@ var app = new Vue({
     modoAdicionar: false,
     modoEditar: false,
     att: 0,
+    input: "",
     criacao: {
       user: "",
       dueTo: null,
@@ -87,6 +88,13 @@ var app = new Vue({
   created() {
     console.log("created");
     this.getTasks();
+  },
+  computed: {
+    inputSearch() {
+      return this.tasks.filter((elem) =>
+        elem.title.toLowerCase().includes(this.input.toLowerCase())
+      );
+    },
   },
   mounted() {
     console.log("montend");
